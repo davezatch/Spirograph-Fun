@@ -235,7 +235,7 @@ button {  width: auto; overflow: visible; }
 a { color: #225ADD!important;}
 html, body { height: 100%;}
 
- body { background: #999; text-align: center;/* font-family: 'Cooper', 'Cooper Black', 'Cooper Std', 'ballterminals';*/ background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #DEDEDE 100%);
+ body { background: #DEDEDE; text-align: center;/* font-family: 'Cooper', 'Cooper Black', 'Cooper Std', 'ballterminals';*/ background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #DEDEDE 100%);
 
 /* Mozilla Firefox */ 
 background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #DEDEDE 100%);
@@ -354,17 +354,22 @@ button {
   /*padding: ;*/
 }
 
+#code-reveal {
+  margin-top: 20px;
+}
+
 #code-display {
+  display: none;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   height: 500px;
-  margin: 20px auto 0;
+  margin: 15px auto;
   padding: 15px;
   font-family: Inconsolata, 'Lucida Console', Courier, monospace;
   font-size: 14px;
   width: 800px;
-  top: 470px;
+  /*top: 470px;*/
   background: rgba(0,0,0,.7);
   color: white;
   text-align: left;

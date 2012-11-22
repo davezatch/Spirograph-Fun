@@ -398,6 +398,11 @@ $("#toImage").click(function() {
   doIt();
 });
 
+// $("#code-display").slideToggle();
+$("#code-reveal").click(function() {
+  $("#code-display").slideToggle();
+});
+
 // $(function(){
 
 //   if (!Modernizr.localstorage){
