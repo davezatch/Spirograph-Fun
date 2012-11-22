@@ -353,12 +353,32 @@ tt { position: absolute; bottom: 15px; right: 15px; display:block;}
   font-size: 1.1em;
   font-weight: bold;
   text-shadow: 3px 3px 6px #333;
+  /*background-image: -ms-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+  background-image: -moz-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+  background-image: -o-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+  background-image: -webkit-gradient(radial, center center, 0, center center, 506, color-stop(0, #FF2121), color-stop(0.2, #F3912E), color-stop(0.4, #F2F22D), color-stop(0.6, #317813), color-stop(0.8, #247DF2), color-stop(1, #EF16D2));
+  background-image: -webkit-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+  background-image: radial-gradient(circle farthest-corner at center, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);*/
+}
+
+#random-spiro {
+  /*padding: 5px 7px;*/
+  /*color: #EBEBEB;*/
+  font-size: 1.35em;
+  font-weight: bold;
+  text-shadow: 3px 3px 6px #333;
   background-image: -ms-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
   background-image: -moz-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
   background-image: -o-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
   background-image: -webkit-gradient(radial, center center, 0, center center, 506, color-stop(0, #FF2121), color-stop(0.2, #F3912E), color-stop(0.4, #F2F22D), color-stop(0.6, #317813), color-stop(0.8, #247DF2), color-stop(1, #EF16D2));
   background-image: -webkit-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
   background-image: radial-gradient(circle farthest-corner at center, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+/*  background-image: -ms-linear-gradient(top left, #FF2121 0%, #F3912E 10%, #FFFF2F 20%, #317813 30%, #247DF2 40%, #E831E2 50%, #F9E15F 60%, #A20343 70%, #4535B1 80%, #09ECB7 90%, #EF16D2 100%);
+  background-image: -moz-linear-gradient(top left, #FF2121 0%, #F3912E 10%, #FFFF2F 20%, #317813 30%, #247DF2 40%, #E831E2 50%, #F9E15F 60%, #A20343 70%, #4535B1 80%, #09ECB7 90%, #EF16D2 100%);
+  background-image: -o-linear-gradient(top left, #FF2121 0%, #F3912E 10%, #FFFF2F 20%, #317813 30%, #247DF2 40%, #E831E2 50%, #F9E15F 60%, #A20343 70%, #4535B1 80%, #09ECB7 90%, #EF16D2 100%);
+  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #FF2121), color-stop(0.1, #F3912E), color-stop(0.2, #FFFF2F), color-stop(0.3, #317813), color-stop(0.4, #247DF2), color-stop(0.5, #E831E2), color-stop(0.6, #F9E15F), color-stop(0.7, #A20343), color-stop(0.8, #4535B1), color-stop(0.9, #09ECB7), color-stop(1, #EF16D2));
+  background-image: -webkit-linear-gradient(top left, #FF2121 0%, #F3912E 10%, #FFFF2F 20%, #317813 30%, #247DF2 40%, #E831E2 50%, #F9E15F 60%, #A20343 70%, #4535B1 80%, #09ECB7 90%, #EF16D2 100%);
+  background-image: linear-gradient(to bottom right, #FF2121 0%, #F3912E 10%, #FFFF2F 20%, #317813 30%, #247DF2 40%, #E831E2 50%, #F9E15F 60%, #A20343 70%, #4535B1 80%, #09ECB7 90%, #EF16D2 100%);*/
 }
 
 button {
