@@ -3,12 +3,13 @@
  much thanks to Paul Irish for his MothereffingHSL
 
 */
-
+var cv  = $('#canvas').get(0);
 var ctx = document.getElementById('canvas').getContext('2d');
 
 var loopOne = 1;
 var loopTwo = 1;
 
+// Defaults
 var spiroOne = 9;
 var spiroTwo = 9;
 var spiroThree = .5;
@@ -18,7 +19,7 @@ var spiroSix = 0.7;
 var spiroSeven = 10;
 
 var spiroColor = "#EE8857";
-var spiroBackgroundColor = "#CECECE";
+var spiroBackgroundColor = "#F9F9F9";
 
 // tell unsupporting browsers to FUCK OFF
 // if (!('textShadow' in document.body.style)) {
@@ -196,6 +197,8 @@ $(singleColor).bind('blur focus', changeColor);
 $(backgroundColor).bind('blur focus', changeBackgroundColor);
 $(rando).bind('click', randomColor);
 
+var history = [];
+
 // document.querySelector('input[type="checkbox"]').addEventListener('change', function(e){
 //   randomMode = e.target.checked;
 // }, false);
@@ -214,9 +217,11 @@ $(rando).bind('click', randomColor);
 
 
 function doIt(e){
-    var ctx = document.getElementById('canvas').getContext('2d');
+    // var ctx = document.getElementById('canvas').getContext('2d');
+    history.push(cv.toDataURL());
+    ctx.beginPath();
     ctx.fillStyle = spiroBackgroundColor;
-    ctx.fillRect(0,0,400,400);
+    ctx.fillRect(0,0,600,600);
     // for (var i=0;i<loopOne;i++) {
       // for (var j=0;j<loopTwo;j++) {
         ctx.save();
@@ -226,7 +231,7 @@ function doIt(e){
           // 20*(loopTwo+2)/(loopTwo+1),
           // -8*(loopOne+3)/(loopOne+1),
           // 10);
-        ctx.translate(200,200);
+        ctx.translate(300,300);
         // drawSpirograph(ctx,20*(2)/(1),-8*(3)/(1),10);
         // drawSpirograph(ctx,
         //   20*(2)/(.5)
@@ -239,7 +244,27 @@ function doIt(e){
         ctx.restore();
       // }
     // }  
+
 }
+
+$("#undo").click(function() {
+  ctx.beginPath();
+
+  var img = new Image;
+
+  img.onload = function() {
+    ctx.clearRect(0, 0, 600, 600);
+    ctx.drawImage(img, 0, 0);
+  };
+
+  // pop twice since there are two canvases
+  if (history.length > 2) {
+    img.src = history.pop();
+    img.src = history.pop();
+  } else {
+    img.src = initialImg;
+  }
+});
 
 function drawSpirograph(ctx,R,r,O){
   var x1 = R-O;
@@ -260,6 +285,8 @@ function drawSpirograph(ctx,R,r,O){
 }
 
 doIt();
+
+var initialImg = cv.toDataURL();
 
 $('.presets a').click(function(){
 
@@ -333,7 +360,7 @@ $("#toImage").click(function() {
   var newWindow = window.open();
   newWindow.document.write('<img src="'+img+'"/>');
   newWindow.document.close();
-  spiroBackgroundColor = "#CECECE";
+  spiroBackgroundColor = "#F9F9F9";
   doIt();
 });
 

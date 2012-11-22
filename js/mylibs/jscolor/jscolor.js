@@ -423,9 +423,9 @@ var jscolor = {
 				if(this.hash) { value = '#'+value; }
 				
 				
-				// valueElement.value = value;
+				valueElement.value = value;
 				
-				valueElement.value = hex2hsl(value);
+				// valueElement.value = hex2hsl(value);
 			}
 			if(!(flags & leaveStyle) && styleElement) {
 				styleElement.style.backgroundColor =

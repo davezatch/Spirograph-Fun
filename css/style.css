@@ -93,10 +93,8 @@ pre, code, kbd, samp { font-family: monospace, sans-serif; }
 
 
 body, select, input, textarea { 
-  /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */ 
   color: #444; 
-  /* set your base font here, to apply evenly */
-  /* font-family: Georgia, serif;  */   
+   font-family: Georgia, serif;     
 }
 
 /* Headers (h1,h2,etc) have no default font-size or margin,
@@ -255,7 +253,7 @@ background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #DEDEDE 100%);
 background-image: linear-gradient(to top, #FFFFFF 0%, #DEDEDE 100%); }
  body{ height: 600px; width: 99%;}
  h1 { margin: 200px  auto 225px; max-width: 900px;  font-size: 90px;  color: fuchsia; text-align: center; }
- fieldset { border: 0; margin: 0; padding: 0; width: 400px; height: 170px; position: absolute; left: 50%; top: 0px; margin-left: -200px;}
+ fieldset { border: 0; margin: 0; padding: 0; /*width: 400px; height: 170px; position: absolute; left: 50%; top: 0px; margin-left: -200px;*/}
  /* */
 /* input[type='range'], .fd-slider { position: absolute !important; left: 50%; top: 80px; width: 100px;
  /* */
@@ -287,8 +285,8 @@ background-image: linear-gradient(to top, #FFFFFF 0%, #DEDEDE 100%); }
 .presetwrap {  width: 300px; margin-left: -150px; position: relative; top: 63 0px;  left: 50%;  font-size: 18px;}
 
 ul {
-  width: 40%;
-  float: right;
+  /*width: 40%;*/
+  /*float: right;*/
   list-style-type: none;
 }
 
@@ -308,11 +306,12 @@ tt { position: absolute; bottom: 15px; right: 15px; display:block;}
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  width: 95%;
+  max-width: 960px;
   padding: 10px;
   margin-right: auto;
   margin-left: auto;
-  min-height: 600px;
+  /*min-height: 600px;*/
+  height: 100%;
 }
 
 .canvas-wrap {
@@ -321,13 +320,14 @@ tt { position: absolute; bottom: 15px; right: 15px; display:block;}
           box-sizing: border-box;
   margin-right: auto;
   margin-left: auto;
-  width: 40%;
-
-  /*float: left;*/
-  clear: both;
+  width: 70%;
+  position: relative;
+  float: left;
+  /*clear: both;*/
 }
 
 #canvas {
+  /*box-shadow: 1px 1px 20px 1px gray;*/
   /*width: 0%;*/
   /*height: 0%;*/
 }
@@ -336,10 +336,10 @@ tt { position: absolute; bottom: 15px; right: 15px; display:block;}
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  /*width: 39%;*/
+  width: 29%;
   height: 350px;
   float: left;
-  text-align: right;
+  /*text-align: right;*/
 }
 
 button {
