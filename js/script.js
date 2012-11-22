@@ -131,20 +131,37 @@ $("#spiroSix, #spiroSixBottom").spinner({
   }
   // "value" : $(this).val()
 });
-$("#spiroSeven, #spiroSevenBottom").spinner({
-  spin : function(e) {
-    spiroSeven = $(this).val();
-    doIt(e);
-  },
-  stop : function(e) {
-    spiroSeven = $(this).val();
-    doIt(e);
-  },
-  change : function(e) {
-    spiroSeven = $(this).val();
-    doIt(e);
-  }
-  // "value" : $(this).val()
+// $("#spiroSeven, #spiroSevenBottom").spinner({
+//   spin : function(e) {
+//     spiroSeven = $(this).val();
+//     doIt(e);
+//   },
+//   stop : function(e) {
+//     spiroSeven = $(this).val();
+//     doIt(e);
+//   },
+//   change : function(e) {
+//     spiroSeven = $(this).val();
+//     doIt(e);
+//   }
+//   // "value" : $(this).val()
+// });
+
+$("#random-spiro").click(function() {
+  spiroOne = Math.random()*15;
+  $("#spiroOne, #spiroOneBottom").val(spiroOne);
+  spiroTwo = Math.random()*15;
+  $("#spiroTwo, #spiroTwoBottom").val(spiroTwo);
+  spiroThree = Math.random()*1.5;
+  $("#spiroThree, #spiroThreeBottom").val(spiroThree);
+  spiroFour = Math.random()*-8;
+  $("#spiroFour, #spiroFourBottom").val(spiroFour);
+  spiroFive = Math.random()*10;
+  $("#spiroFive, #spiroFiveBottom").val(spiroFive);
+  spiroSix = Math.random()*0.7;
+  $("#spiroSix, #spiroSixBottom").val(spiroSix);
+  randomColor();
+  doIt();
 });
 
 // var inputValues = {

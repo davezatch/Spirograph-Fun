@@ -40,9 +40,7 @@
 </head>
 <body>
 
-  <header id="header" class="">
-    Sprirograph Creator
-  </header><!-- /header -->
+  <header id="header" class="">Fun with Spirographs</header><!-- /header -->
 
   <!-- <h1 contenteditable>MOTHER EFFING TEXT-SHADOW</h1> -->
   <div class="wrapper clearfix">
@@ -55,7 +53,7 @@
       <!-- <input type="range" id="numEl" min="1" max="10" value="1"> -->
     </li>
        <li>
-        <label for="single-color">Spirograph Color</label>
+        <label for="single-color">Color:</label>
       <input class="color {hash:true}" id="single-color" name="single-color" value="EE8857">
     </li>
       <!--  <li>
@@ -64,7 +62,7 @@
     </li> -->
       <!-- <label><input type=checkbox> wtf</label> -->
       <li>
-      <button id="random-color">rando!</button>
+      <button id="random-color">Randomize Color</button>
 </li>
 </ul>
 <ul>
@@ -107,9 +105,12 @@
         <input type="text" class="number-spinner" name="spiroSeven" id="spiroSeven" value="10" placeholder="">
       </li> -->
       <li>
-        <button id="undo">Undo</button>
+        <button id="random-spiro">Randomize Everything!</button>
       </li>
       <li>
+        <button id="undo">Undo</button>
+      <!-- </li>
+      <li> -->
         <button id="toImage">Make it an Image!</button>
       </li>
   </ul>
@@ -126,6 +127,7 @@
 <button id="code-reveal">How does it work?</button>
   
   <pre id="code-display" readonly>
+    <span class="code-comment">// The Spirograph function definition</span>
     function drawSpirograph(canvas,R,r,O){
     &nbsp;&nbsp;var x1 = R-O;
     &nbsp;&nbsp;var y1 = 0;
@@ -144,12 +146,15 @@
     &nbsp;&nbsp;canvas.stroke();
     }
 
+    <span class="code-comment">// Calling the function</span>
     drawSpirograph(
     &nbsp;&nbsp;canvas,
     &nbsp;&nbsp;<input type="text" id="spiroOneBottom" class="code-input" value="9"> * ( <input type="text" id="spiroTwoBottom" class="code-input" value="9"> ) / ( <input type="text" id="spiroThreeBottom" class="code-input" value="0.5"> ),
     &nbsp;&nbsp;<input type="text" id="spiroFourBottom" class="code-input" value="-8"> * ( <input type="text" id="spiroFiveBottom" class="code-input" value="10"> ) / ( <input type="text" id="spiroSixBottom" class="code-input" value="0.7"> ),
     &nbsp;&nbsp;10
       );
+
+      <span class="code-comment">// Thanks to MDN and the code examples on this page: <a href="https://developer.mozilla.org/en-US/docs/Canvas_tutorial/Transformations" title="Canvas Transformations">Canvas Transformations</a></span>
   </pre>
   </div>
   <!-- <div class="presetwrap">
@@ -159,7 +164,7 @@
   </div> -->
 
 
-<!-- <br><br><tt>Made by <a href=http://paulirish.com>Paul Irish</a></tt> -->
+<br><br><tt>Made by <a href="http://www.davidcarter.net">David Carter</a></tt>
 
 
   <!-- Javascript at the bottom for fast page loading -->

@@ -168,8 +168,8 @@ input:invalid, textarea:invalid {
 /* These selection declarations have to be separate.
    No text-shadow: twitter.com/miketaylr/status/12228805301 
    Also: hot pink. */
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; } 
+::-moz-selection{ background: #68D7EA; color:#fff; text-shadow: none; }
+::selection { background:#68D7EA; color:#fff; text-shadow: none; } 
 
 /*  j.mp/webkit-tap-highlight-color */
 a:link { -webkit-tap-highlight-color: #FF5E99; } 
@@ -287,6 +287,7 @@ background-image: linear-gradient(to top, #FFFFFF 0%, #DEDEDE 100%); }
 ul {
   /*width: 40%;*/
   /*float: right;*/
+  text-align: left;
   list-style-type: none;
 }
 
@@ -342,16 +343,38 @@ tt { position: absolute; bottom: 15px; right: 15px; display:block;}
   /*text-align: right;*/
 }
 
+.color {
+  width: 80px;
+}
+
+#random-color {
+  padding: 5px 7px;
+  color: #EBEBEB;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-shadow: 3px 3px 6px #333;
+  background-image: -ms-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+  background-image: -moz-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+  background-image: -o-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+  background-image: -webkit-gradient(radial, center center, 0, center center, 506, color-stop(0, #FF2121), color-stop(0.2, #F3912E), color-stop(0.4, #F2F22D), color-stop(0.6, #317813), color-stop(0.8, #247DF2), color-stop(1, #EF16D2));
+  background-image: -webkit-radial-gradient(center, circle farthest-corner, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+  background-image: radial-gradient(circle farthest-corner at center, #FF2121 0%, #F3912E 20%, #F2F22D 40%, #317813 60%, #247DF2 80%, #EF16D2 100%);
+}
+
 button {
   border: none;
   padding: 10px;
-  font-size: 1.2em;
-  background-color: #CECECE
+  font-size: 1.3em;
+  background-color: #1E5BA6;
+  background-color: rgba(30, 91, 166, 0.75);
+  color: white;
 }
 
 #toImage {
+  margin-top: 25px;
   border: none;
-  /*padding: ;*/
+  background-color: #3882DC;
+  color: white;
 }
 
 #code-reveal {
@@ -363,7 +386,7 @@ button {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  height: 500px;
+  height: auto;
   margin: 15px auto;
   padding: 15px;
   font-family: Inconsolata, 'Lucida Console', Courier, monospace;
@@ -375,8 +398,18 @@ button {
   text-align: left;
 }
 
+.code-comment {
+  color: #C8C8C8;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.code-comment a {
+  background: rgba(245, 245, 245, 0.81);
+  padding: 3px 7px;
+}
+
 span.ui-spinner {
-  width: 50px;
+  width: 80px;
 }
 
 
