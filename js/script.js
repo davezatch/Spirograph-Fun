@@ -37,7 +37,7 @@ var numEl = 5;
 
 var randomMode = false;
 
-$("#spiroOne").spinner({
+$("#spiroOne, #spiroOneBottom").spinner({
   spin : function(e) {
     spiroOne = $(this).val();
     doIt(e);
@@ -52,7 +52,7 @@ $("#spiroOne").spinner({
   }
   // "value" : $(this).val()
 });
-$("#spiroTwo").spinner({
+$("#spiroTwo, #spiroTwoBottom").spinner({
   spin : function(e) {
     spiroTwo = $(this).val();
     doIt(e);
@@ -67,7 +67,7 @@ $("#spiroTwo").spinner({
   }
   // "value" : $(this).val()
 });
-$("#spiroThree").spinner({
+$("#spiroThree, #spiroThreeBottom").spinner({
   numberFormat : "n",
   step : 0.1,
   spin : function(e) {
@@ -84,7 +84,7 @@ $("#spiroThree").spinner({
   }
   // "value" : $(this).val()
 });
-$("#spiroFour").spinner({
+$("#spiroFour, #spiroFourBottom").spinner({
   spin : function(e) {
     spiroFour = $(this).val();
     doIt(e);
@@ -99,7 +99,7 @@ $("#spiroFour").spinner({
   }
   // "value" : $(this).val()
 });
-$("#spiroFive").spinner({
+$("#spiroFive, #spiroFiveBottom").spinner({
   spin : function(e) {
     spiroFive = $(this).val();
     doIt(e);
@@ -114,7 +114,7 @@ $("#spiroFive").spinner({
   }
   // "value" : $(this).val()
 });
-$("#spiroSix").spinner({
+$("#spiroSix, #spiroSixBottom").spinner({
   numberFormat : "n",
   step : 0.1,
   spin : function(e) {
@@ -131,7 +131,7 @@ $("#spiroSix").spinner({
   }
   // "value" : $(this).val()
 });
-$("#spiroSeven").spinner({
+$("#spiroSeven, #spiroSevenBottom").spinner({
   spin : function(e) {
     spiroSeven = $(this).val();
     doIt(e);
@@ -146,6 +146,40 @@ $("#spiroSeven").spinner({
   }
   // "value" : $(this).val()
 });
+
+// var inputValues = {
+//   "#spiroOne" : spiroOne,
+//   "#spiroTwo" : spiroTwo,
+//   "#spiroThree" : spiroThree,
+//   "#spiroFour" : spiroFour,
+//   "#spiroFive" : spiroFive,
+//   "#spiroSix" : spiroSix,
+//   "#spiroSeven" : spiroSeven,
+// };
+
+// $.each(inputValues, function(key, value) {
+//   var foundIt = $("span:contains(" + key + "#)").html(); /*produces string*/
+//   // $("span:contains(" + key + "#)").css("background","red");
+//   // var find = key;
+//   var valueStr = value.toString();
+//   // console.log(valueStr);
+//   var regex = new RegExp(foundIt, "g");
+//   // foundIt.replace(regex, value.toString());
+//   // console.log(regex);
+//   console.log(foundIt.replace(regex, value.toString()));
+//   foundIt.replace(regex, value.toString());
+
+
+//   // var foundIt = $("span:contains(" + key + "#)");
+//   // var foundString = foundIt.toString();
+//   // foundString.replace(/#/g, value);
+//   // console.log(foundIt + ": " + value);
+//   // console.log(typeof(foundIt));
+//     // foundIt.css("background","red");
+//     // foundIt.replace(/#/g, value);
+//   // var foundIt = $(key + "#")
+// });
+
 // $('input[type="range"]').change(function(e){
 
 //   // reset so we dont do multiple directions

@@ -125,14 +125,39 @@
   </div>
   </div>
 
-<!--   <textarea></textarea>
+  <pre id="code-display" readonly>
+    function drawSpirograph(canvas,R,r,O){
+    &nbsp;&nbsp;var x1 = R-O;
+    &nbsp;&nbsp;var y1 = 0;
+    &nbsp;&nbsp;var i  = 1;
+    &nbsp;&nbsp;canvas.beginPath();
+    &nbsp;&nbsp;canvas.moveTo(x1,y1);
+    &nbsp;&nbsp;do {
+    &nbsp;&nbsp;&nbsp;&nbsp;if (i>20000) break;
+    &nbsp;&nbsp;&nbsp;&nbsp;var x2 = (R+r)*Math.cos(i*Math.PI/72) - (r+O)*Math.cos(((R+r)/r)*(i*Math.PI/72))
+    &nbsp;&nbsp;&nbsp;&nbsp;var y2 = (R+r)*Math.sin(i*Math.PI/72) - (r+O)*Math.sin(((R+r)/r)*(i*Math.PI/72))
+    &nbsp;&nbsp;&nbsp;&nbsp;canvas.lineTo(x2,y2);
+    &nbsp;&nbsp;&nbsp;&nbsp;x1 = x2;
+    &nbsp;&nbsp;&nbsp;&nbsp;y1 = y2;
+    &nbsp;&nbsp;&nbsp;&nbsp;i++;
+    &nbsp;&nbsp;} while (x2 != R-O && y2 != 0 );
+    &nbsp;&nbsp;canvas.stroke();
+    }
 
-  <div class="presetwrap">
+    drawSpirograph(
+    &nbsp;&nbsp;canvas,
+    &nbsp;&nbsp;<input type="text" id="spiroOneBottom" class="code-input" value="9"> * ( <input type="text" id="spiroTwoBottom" class="code-input" value="9"> ) / ( <input type="text" id="spiroThreeBottom" class="code-input" value="0.5"> ),
+    &nbsp;&nbsp;<input type="text" id="spiroFourBottom" class="code-input" value="-8"> * ( <input type="text" id="spiroFiveBottom" class="code-input" value="10"> ) / ( <input type="text" id="spiroSixBottom" class="code-input" value=""> ),
+    &nbsp;&nbsp;<input type="text" id="spiroSevenBottom" class="code-input" value="0.7">
+      );
+  </pre>
+
+  <!-- <div class="presetwrap">
     <h3 class="presets">My Presets <small>[<a href="#">save new preset</a>]</small></h3>
     <ol>
     </ol>
-  </div>
- -->
+  </div> -->
+
 
 <!-- <br><br><tt>Made by <a href=http://paulirish.com>Paul Irish</a></tt> -->
 
