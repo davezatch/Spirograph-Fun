@@ -10,6 +10,7 @@ var loopOne = 1;
 var loopTwo = 1;
 
 // Defaults
+var numPoints = 20000;
 var spiroOne = 9;
 var spiroTwo = 9;
 var spiroThree = .5;
@@ -21,12 +22,12 @@ var spiroSeven = 10;
 var spiroColor = "#EE8857";
 var spiroBackgroundColor = "#F9F9F9";
 
-// tell unsupporting browsers to FUCK OFF
-// if (!('textShadow' in document.body.style)) {
+var topDiv = $("div.wrapper");
+
+// if (!('canvas' in document.body.style)) {
 //   document.querySelector('fieldset').style.display = 'none';
-//   document.querySelector('textarea').style.display = 'none';
-//   h1.style.marginTop = 0;
-//   h1.innerHTML = 'Your browser doesn\'t support text-shadow. <small style="font-size: 20px">It was even in CSS2.0!</small> Just terrible...';
+//   document.querySelector('canvas').style.display = 'none';
+//   topDiv.innerHTML = 'Your browser doesn\'t support canvas. :(';
 // }
 
 var width = ctx.width;
@@ -37,33 +38,53 @@ var numEl = 5;
 
 var randomMode = false;
 
+$("#numPoints, #numPointsBottom").spinner({
+  spin : function(e) {
+    numPoints = $(this).val();
+    makeItSo(e);
+  },
+  stop : function(e) {
+    numPoints = $(this).val();
+    makeItSo(e);
+  },
+  change : function(e) {
+    numPoints = $(this).val();
+    makeItSo(e);
+  }
+  // "value" : $(this).val()
+});
+
 $("#spiroOne, #spiroOneBottom").spinner({
+  numberFormat : "n",
+  step : 0.1,
   spin : function(e) {
     spiroOne = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   stop : function(e) {
     spiroOne = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   change : function(e) {
     spiroOne = $(this).val();
-    doIt(e);
+    makeItSo(e);
   }
   // "value" : $(this).val()
 });
 $("#spiroTwo, #spiroTwoBottom").spinner({
+  numberFormat : "n",
+  step : 0.1,
   spin : function(e) {
     spiroTwo = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   stop : function(e) {
     spiroTwo = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   change : function(e) {
     spiroTwo = $(this).val();
-    doIt(e);
+    makeItSo(e);
   }
   // "value" : $(this).val()
 });
@@ -72,45 +93,49 @@ $("#spiroThree, #spiroThreeBottom").spinner({
   step : 0.1,
   spin : function(e) {
     spiroThree = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   stop : function(e) {
     spiroThree = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   change : function(e) {
     spiroThree = $(this).val();
-    doIt(e);
+    makeItSo(e);
   }
   // "value" : $(this).val()
 });
 $("#spiroFour, #spiroFourBottom").spinner({
+  numberFormat : "n",
+  step : 0.1,
   spin : function(e) {
     spiroFour = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   stop : function(e) {
     spiroFour = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   change : function(e) {
     spiroFour = $(this).val();
-    doIt(e);
+    makeItSo(e);
   }
   // "value" : $(this).val()
 });
 $("#spiroFive, #spiroFiveBottom").spinner({
+  numberFormat : "n",
+  step : 0.1,
   spin : function(e) {
     spiroFive = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   stop : function(e) {
     spiroFive = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   change : function(e) {
     spiroFive = $(this).val();
-    doIt(e);
+    makeItSo(e);
   }
   // "value" : $(this).val()
 });
@@ -119,49 +144,94 @@ $("#spiroSix, #spiroSixBottom").spinner({
   step : 0.1,
   spin : function(e) {
     spiroSix = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   stop : function(e) {
     spiroSix = $(this).val();
-    doIt(e);
+    makeItSo(e);
   },
   change : function(e) {
     spiroSix = $(this).val();
-    doIt(e);
+    makeItSo(e);
   }
   // "value" : $(this).val()
 });
 // $("#spiroSeven, #spiroSevenBottom").spinner({
 //   spin : function(e) {
 //     spiroSeven = $(this).val();
-//     doIt(e);
+//     makeItSo(e);
 //   },
 //   stop : function(e) {
 //     spiroSeven = $(this).val();
-//     doIt(e);
+//     makeItSo(e);
 //   },
 //   change : function(e) {
 //     spiroSeven = $(this).val();
-//     doIt(e);
+//     makeItSo(e);
 //   }
 //   // "value" : $(this).val()
 // });
 
+$("#slow-burn").click(function() {
+    numPoints = 100;
+    // var curNumPoints = numPoints;
+    setInterval(function() {
+        // while (numPoints < 500) {
+            makeItSo();
+            if (numPoints < $("#numPoints").val()) {
+            numPoints += 100;
+            // console.log(numPoints);
+    }
+        // }
+    }, 100);
+})
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(rgbArr) {
+  // var result = "#";
+  var result = "";
+  for (var i = 0; i < rgbArr.length; i++) {
+      // console.log(parseInt(rgbArr[i]));
+      result += componentToHex(parseInt(rgbArr[i]));
+      // result = componentToHex(rgbArr[i]);
+  }
+  return result;
+}
+
+var str = 'rgb(138,93,179)';
+
+function toHex(rgb) {
+  rgb = rgb.slice(4, -1);
+  rgb = rgb.split(",");
+  return rgbToHex(rgb);
+}
+
+// toHex(str);
+
+// $("#test-box").append(toHex(str));
+
 $("#random-spiro").click(function() {
-  spiroOne = Math.random()*15;
+  numPoints = Math.floor(Math.random()*20000+200);
+  $("#numPoints, #numPointsBottom").val(numPoints);
+  spiroOne = (Math.random()*15).toFixed(1);
   $("#spiroOne, #spiroOneBottom").val(spiroOne);
-  spiroTwo = Math.random()*15;
+  spiroTwo = (Math.random()*15).toFixed(1);
   $("#spiroTwo, #spiroTwoBottom").val(spiroTwo);
-  spiroThree = Math.random()*1.5;
+  spiroThree = (Math.random()*1.5).toFixed(1);
   $("#spiroThree, #spiroThreeBottom").val(spiroThree);
-  spiroFour = Math.random()*-8;
+  spiroFour = (Math.random()*-8).toFixed(1);
   $("#spiroFour, #spiroFourBottom").val(spiroFour);
-  spiroFive = Math.random()*10;
+  spiroFive = (Math.random()*10).toFixed(1);
   $("#spiroFive, #spiroFiveBottom").val(spiroFive);
-  spiroSix = Math.random()*0.7;
+  spiroSix = (Math.random()*0.7).toFixed(1);
   $("#spiroSix, #spiroSixBottom").val(spiroSix);
+
   randomColor();
-  doIt();
+  makeItSo();
 });
 
 // var inputValues = {
@@ -208,7 +278,7 @@ $("#random-spiro").click(function() {
 //     // $(this).val();
 //   }
 //     numEl = $(this).val();
-//     doIt(e);
+//     makeItSo(e);
 //     });
   // }
 
@@ -217,7 +287,7 @@ $("#random-spiro").click(function() {
 
 //   length = e.target.value;
 //   //debugger;
-//   doIt(e);
+//   makeItSo(e);
 
 // });
 
@@ -225,18 +295,20 @@ $("#random-spiro").click(function() {
 // color
 function changeColor(e){
   spiroColor = e.target.value;
-  doIt(e);
+  makeItSo(e);
 };
 
 function changeBackgroundColor(e){
   spiroBackgroundColor = e.target.value;
-  doIt(e);
+  makeItSo(e);
 };
 
 function randomColor(e) {
   spiroColor = 'rgb(' + Math.floor(Math.random()*255) + ',' +
                           Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ')';
-doIt(e);
+  var newColor = toHex(spiroColor);
+  singleColor.color.fromString(newColor);
+  makeItSo(e);
 }
 
 var singleColor = document.getElementById("single-color");
@@ -267,7 +339,7 @@ var history = [];
 // });
 
 
-function doIt(e){
+function makeItSo(e){
     // var ctx = document.getElementById('canvas').getContext('2d');
     history.push(cv.toDataURL());
     ctx.beginPath();
@@ -323,19 +395,24 @@ function drawSpirograph(ctx,R,r,O){
   var i  = 1;
   ctx.beginPath();
   ctx.moveTo(x1,y1);
-  do {
-    if (i>20000) break;
+  // do {
+    // if (i > numPoints) break;
+    for (i; i < numPoints; i++) {
     var x2 = (R+r)*Math.cos(i*Math.PI/72) - (r+O)*Math.cos(((R+r)/r)*(i*Math.PI/72))
     var y2 = (R+r)*Math.sin(i*Math.PI/72) - (r+O)*Math.sin(((R+r)/r)*(i*Math.PI/72))
     ctx.lineTo(x2,y2);
     x1 = x2;
     y1 = y2;
-    i++;
-  } while (x2 != R-O && y2 != 0 );
+    // i++;
+  }
+    // if (i < numPoints) {
+    //   setTimeout(drawSpirograph, 1000)
+    // }
+  // } while (x2 != R-O && y2 != 0 );
   ctx.stroke();
 }
 
-doIt();
+makeItSo();
 
 var initialImg = cv.toDataURL();
 
@@ -405,14 +482,14 @@ buildPresets = function(){
 
 $("#toImage").click(function() {
   spiroBackgroundColor = "rgba(255,255,255,1)";
-  doIt();
+  makeItSo();
   var canvas = document.getElementById('canvas');
   var img    = canvas.toDataURL("image/png");
   var newWindow = window.open();
   newWindow.document.write('<img src="'+img+'"/>');
   newWindow.document.close();
   spiroBackgroundColor = "#F9F9F9";
-  doIt();
+  makeItSo();
 });
 
 // $("#code-display").slideToggle();
@@ -431,24 +508,11 @@ $("#code-reveal").click(function() {
 //   buildPresets();
 // })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// jQuery(document).ready(function($) {
+//   while (numPoints < 20000) {
+//    setInterval(makeItSo, 3000);
+//    console.log(numPoints);
+//    numPoints += 3000;
+//    // makeItSo();
+//   }
+// });

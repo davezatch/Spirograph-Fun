@@ -344,6 +344,7 @@ tt { position: absolute; bottom: 15px; right: 15px; display:block;}
 }
 
 .color {
+  font-family: Arial, sans-serif;
   width: 80px;
 }
 

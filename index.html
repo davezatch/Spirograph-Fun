@@ -77,6 +77,10 @@
         <input type="number" name="loopTwo" id="loopTwo" value="1" placeholder="">
       </li> -->
         <li>
+        <label for="numPoints"># of Points:</label>
+        <input type="text" class="number-spinner" name="numPoints" id="numPoints" value="20000" max="30000" min="1" placeholder="">
+      </li>
+        <li>
         <label for="spiroOne">Spiro One:</label>
         <input type="text" class="number-spinner" name="spiroOne" id="spiroOne" value="9" placeholder="">
       </li>
@@ -105,6 +109,9 @@
         <input type="text" class="number-spinner" name="spiroSeven" id="spiroSeven" value="10" placeholder="">
       </li> -->
       <li>
+        <button id="slow-burn">Draw It</button>
+      </li>
+      <li>
         <button id="random-spiro">Randomize Everything!</button>
       </li>
       <li>
@@ -112,6 +119,11 @@
       <!-- </li>
       <li> -->
         <button id="toImage">Make it an Image!</button>
+      </li>
+      <li>
+        <div id="test-box">
+          
+        </div>
       </li>
   </ul>
     </fieldset>
@@ -135,7 +147,7 @@
     &nbsp;&nbsp;canvas.beginPath();
     &nbsp;&nbsp;canvas.moveTo(x1,y1);
     &nbsp;&nbsp;do {
-    &nbsp;&nbsp;&nbsp;&nbsp;if (i>20000) break;
+    &nbsp;&nbsp;&nbsp;&nbsp;if (i > <input type="text" id="numPointsBottom" class="code-input" value="20000" max="30000" min="1">) break;
     &nbsp;&nbsp;&nbsp;&nbsp;var x2 = (R+r)*Math.cos(i*Math.PI/72) - (r+O)*Math.cos(((R+r)/r)*(i*Math.PI/72))
     &nbsp;&nbsp;&nbsp;&nbsp;var y2 = (R+r)*Math.sin(i*Math.PI/72) - (r+O)*Math.sin(((R+r)/r)*(i*Math.PI/72))
     &nbsp;&nbsp;&nbsp;&nbsp;canvas.lineTo(x2,y2);
