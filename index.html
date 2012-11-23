@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
-  <title>Sprirographs!</title>
+  <title>Spirographs!</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -40,7 +40,7 @@
 </head>
 <body>
 
-  <header id="header" class="">Fun with Spirographs</header><!-- /header -->
+  <header id="header" class="">Spirographs!</header><!-- /header -->
 
   <!-- <h1 contenteditable>MOTHER EFFING TEXT-SHADOW</h1> -->
   <div class="wrapper clearfix">
@@ -62,7 +62,7 @@
     </li> -->
       <!-- <label><input type=checkbox> wtf</label> -->
       <li>
-      <button id="random-color">Randomize Color</button>
+      <button id="random-color">Random Color</button>
 </li>
 </ul>
 <ul>
@@ -78,30 +78,30 @@
       </li> -->
         <li>
         <label for="numPoints"># of Points:</label>
-        <input type="text" class="number-spinner" name="numPoints" id="numPoints" value="20000" max="30000" min="1" placeholder="">
+        <input type="text" class="number-spinner" name="numPoints" id="numPoints" value="20000" max="30000" min="1" placeholder=""> <input type="text" name="numPointsCounter" id="numPointsCounter" value="0" readonly>
       </li>
         <li>
-        <label for="spiroOne">Spiro One:</label>
+        <label for="spiroOne">1:</label>
         <input type="text" class="number-spinner" name="spiroOne" id="spiroOne" value="9" placeholder="">
       </li>
         <li>
-        <label for="spiroTwo">Spiro Two:</label>
+        <label for="spiroTwo">2:</label>
         <input type="text" class="number-spinner" name="spiroTwo" id="spiroTwo" value="9" placeholder="">
       </li>
         <li>
-        <label for="spiroThree">Spiro 3:</label>
+        <label for="spiroThree">3:</label>
         <input type="text" class="number-spinner" name="spiroThree" id="spiroThree" value="0.5" placeholder="">
       </li>
         <li>
-        <label for="spiroFour">Spiro 4:</label>
+        <label for="spiroFour">4:</label>
         <input type="text" class="number-spinner" name="spiroFour" id="spiroFour" value="-8" placeholder="">
       </li>
         <li>
-        <label for="spiroFive">Spiro 5:</label>
+        <label for="spiroFive">5:</label>
         <input type="text" class="number-spinner" name="spiroFive" id="spiroFive" value="10" placeholder="">
       </li>
         <li>
-        <label for="spiroSix">Spiro 6:</label>
+        <label for="spiroSix">6:</label>
         <input type="text" class="number-spinner" name="spiroSix" id="spiroSix" value="0.7" placeholder="">
       </li>
         <!-- <li>
@@ -109,13 +109,17 @@
         <input type="text" class="number-spinner" name="spiroSeven" id="spiroSeven" value="10" placeholder="">
       </li> -->
       <li>
+        <br>
         <button id="slow-burn">Draw It</button>
-      </li>
-      <li>
-        <button id="random-spiro">Randomize Everything!</button>
-      </li>
-      <li>
+        <button id="slow-burn-stop">Stop</button>
         <button id="undo">Undo</button>
+      </li>
+      <li>
+        <br>
+        <button id="random-spiro"><span>Randomize Everything!</span></button>
+      </li>
+      <li>
+        
       <!-- </li>
       <li> -->
         <button id="toImage">Make it an Image!</button>
@@ -125,11 +129,19 @@
           
         </div>
       </li>
+      <li>
+        <pre class="keyboard-info" readonly>
+Keyboard Shortcuts:          
+
+<span class="yellow">Up/Down</span>: Increment by .01
+<span class="yellow">Page Up/Page Down</span>: Increment by .1
+        </pre>
+      </li>
   </ul>
     </fieldset>
   </div>
   <div class="canvas-wrap clearfix">
-  <canvas id="canvas" height="600" width="600">
+  <canvas id="canvas" height="700" width="700">
     
   </canvas>
   <!-- <canvas id="canvasbg" height="400" width="400">
@@ -168,7 +180,11 @@
 
       <span class="code-comment">// Thanks to MDN and the code examples on this page: <a href="https://developer.mozilla.org/en-US/docs/Canvas_tutorial/Transformations" title="Canvas Transformations">Canvas Transformations</a></span>
   </pre>
+  <div id="image-preview">
+    image here!
   </div>
+  </div>
+  
   <!-- <div class="presetwrap">
     <h3 class="presets">My Presets <small>[<a href="#">save new preset</a>]</small></h3>
     <ol>

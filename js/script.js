@@ -10,17 +10,21 @@ var loopOne = 1;
 var loopTwo = 1;
 
 // Defaults
-var numPoints = 20000;
-var spiroOne = 9;
-var spiroTwo = 9;
-var spiroThree = .5;
-var spiroFour = -8;
-var spiroFive = 10;
-var spiroSix = 0.7;
+var numPoints = 15000;
+var spiroOne = 10.23;
+var spiroTwo = 6.64;
+var spiroThree = 1.52;
+var spiroFour = -4.61;
+var spiroFive = 7.34;
+var spiroSix = 0.2;
 var spiroSeven = 10;
 
-var spiroColor = "#EE8857";
-var spiroBackgroundColor = "#F9F9F9";
+var spiroColor = "#006622";
+var spiroBackgroundColor = "#F0F0F0";
+
+var baseNumPoints = 0;
+var slowBurnStatus = true;
+var staticDrawing = true;
 
 var topDiv = $("div.wrapper");
 
@@ -56,7 +60,7 @@ $("#numPoints, #numPointsBottom").spinner({
 
 $("#spiroOne, #spiroOneBottom").spinner({
   numberFormat : "n",
-  step : 0.1,
+  step : 0.01,
   spin : function(e) {
     spiroOne = $(this).val();
     makeItSo(e);
@@ -73,7 +77,7 @@ $("#spiroOne, #spiroOneBottom").spinner({
 });
 $("#spiroTwo, #spiroTwoBottom").spinner({
   numberFormat : "n",
-  step : 0.1,
+  step : 0.01,
   spin : function(e) {
     spiroTwo = $(this).val();
     makeItSo(e);
@@ -90,7 +94,7 @@ $("#spiroTwo, #spiroTwoBottom").spinner({
 });
 $("#spiroThree, #spiroThreeBottom").spinner({
   numberFormat : "n",
-  step : 0.1,
+  step : 0.01,
   spin : function(e) {
     spiroThree = $(this).val();
     makeItSo(e);
@@ -107,7 +111,7 @@ $("#spiroThree, #spiroThreeBottom").spinner({
 });
 $("#spiroFour, #spiroFourBottom").spinner({
   numberFormat : "n",
-  step : 0.1,
+  step : 0.01,
   spin : function(e) {
     spiroFour = $(this).val();
     makeItSo(e);
@@ -124,7 +128,7 @@ $("#spiroFour, #spiroFourBottom").spinner({
 });
 $("#spiroFive, #spiroFiveBottom").spinner({
   numberFormat : "n",
-  step : 0.1,
+  step : 0.01,
   spin : function(e) {
     spiroFive = $(this).val();
     makeItSo(e);
@@ -141,7 +145,7 @@ $("#spiroFive, #spiroFiveBottom").spinner({
 });
 $("#spiroSix, #spiroSixBottom").spinner({
   numberFormat : "n",
-  step : 0.1,
+  step : 0.01,
   spin : function(e) {
     spiroSix = $(this).val();
     makeItSo(e);
@@ -172,19 +176,40 @@ $("#spiroSix, #spiroSixBottom").spinner({
 //   // "value" : $(this).val()
 // });
 
-$("#slow-burn").click(function() {
-    numPoints = 100;
-    // var curNumPoints = numPoints;
+var slowBurn = function() {
+    numPoints = baseNumPoints;
+    
     setInterval(function() {
-        // while (numPoints < 500) {
+        if (numPoints < $("#numPoints").val()) {
             makeItSo();
-            if (numPoints < $("#numPoints").val()) {
-            numPoints += 100;
-            // console.log(numPoints);
-    }
-        // }
-    }, 100);
-})
+            if (slowBurnStatus) {
+                numPoints++;
+            } else {
+                staticDrawing = true;
+            }
+            $("#numPointsCounter").val(numPoints);
+            staticDrawing = false;
+        } else {
+            return;
+        }
+    }, 1);
+    staticDrawing = true;
+}
+
+$("#slow-burn-stop").click(function() {
+    slowBurnStatus = false;
+    baseNumPoints = $("#numPointsCounter").val();
+    $("#undo").prop('disabled', false);
+    slowBurn();
+});
+
+
+$("#slow-burn").click(function() {
+    slowBurnStatus = true;
+    baseNumPoints = 0;
+    $("#undo").prop('disabled', true);
+    slowBurn();
+});
 
 function componentToHex(c) {
     var hex = c.toString(16);
@@ -192,17 +217,12 @@ function componentToHex(c) {
 }
 
 function rgbToHex(rgbArr) {
-  // var result = "#";
   var result = "";
   for (var i = 0; i < rgbArr.length; i++) {
-      // console.log(parseInt(rgbArr[i]));
       result += componentToHex(parseInt(rgbArr[i]));
-      // result = componentToHex(rgbArr[i]);
   }
   return result;
 }
-
-var str = 'rgb(138,93,179)';
 
 function toHex(rgb) {
   rgb = rgb.slice(4, -1);
@@ -210,24 +230,26 @@ function toHex(rgb) {
   return rgbToHex(rgb);
 }
 
-// toHex(str);
-
-// $("#test-box").append(toHex(str));
-
 $("#random-spiro").click(function() {
-  numPoints = Math.floor(Math.random()*20000+200);
+  numPoints = Math.floor(Math.random()*20000+1000);
   $("#numPoints, #numPointsBottom").val(numPoints);
-  spiroOne = (Math.random()*15).toFixed(1);
+
+  spiroOne = (Math.random()*15).toFixed(2);
   $("#spiroOne, #spiroOneBottom").val(spiroOne);
-  spiroTwo = (Math.random()*15).toFixed(1);
+
+  spiroTwo = (Math.random()*15).toFixed(2);
   $("#spiroTwo, #spiroTwoBottom").val(spiroTwo);
-  spiroThree = (Math.random()*1.5).toFixed(1);
+
+  spiroThree = (Math.random()*3.5).toFixed(2);
   $("#spiroThree, #spiroThreeBottom").val(spiroThree);
-  spiroFour = (Math.random()*-8).toFixed(1);
+
+  spiroFour = (Math.random()*-10).toFixed(2);
   $("#spiroFour, #spiroFourBottom").val(spiroFour);
-  spiroFive = (Math.random()*10).toFixed(1);
+
+  spiroFive = (Math.random()*10).toFixed(2);
   $("#spiroFive, #spiroFiveBottom").val(spiroFive);
-  spiroSix = (Math.random()*0.7).toFixed(1);
+
+  spiroSix = (Math.random()*0.7).toFixed(2);
   $("#spiroSix, #spiroSixBottom").val(spiroSix);
 
   randomColor();
@@ -315,7 +337,6 @@ var singleColor = document.getElementById("single-color");
 var backgroundColor = document.getElementById("background-color");
 var rando = document.getElementById("random-color");
 
-// var elColor = document.querySelector('input[type="color"]');
 $(singleColor).bind('blur focus', changeColor);
 $(backgroundColor).bind('blur focus', changeBackgroundColor);
 $(rando).bind('click', randomColor);
@@ -341,33 +362,21 @@ var history = [];
 
 function makeItSo(e){
     // var ctx = document.getElementById('canvas').getContext('2d');
-    history.push(cv.toDataURL());
+    if (staticDrawing) {
+        history.push(cv.toDataURL());
+    }
     ctx.beginPath();
     ctx.fillStyle = spiroBackgroundColor;
-    ctx.fillRect(0,0,600,600);
-    // for (var i=0;i<loopOne;i++) {
-      // for (var j=0;j<loopTwo;j++) {
-        ctx.save();
-        ctx.strokeStyle = spiroColor;
-        // ctx.translate(50+loopTwo*100,50+loopOne*100);
-        // drawSpirograph(ctx,
-          // 20*(loopTwo+2)/(loopTwo+1),
-          // -8*(loopOne+3)/(loopOne+1),
-          // 10);
-        ctx.translate(300,300);
-        // drawSpirograph(ctx,20*(2)/(1),-8*(3)/(1),10);
-        // drawSpirograph(ctx,
-        //   20*(2)/(.5)
-        //   ,-8*(3)/(.5)
-        //   ,10);
-        drawSpirograph(ctx,
-          spiroOne*(spiroTwo)/(spiroThree)
-          ,spiroFour*(spiroFive)/(spiroSix)
-          ,spiroSeven);
-        ctx.restore();
-      // }
-    // }  
+    ctx.fillRect(0,0,700,700);
+    ctx.save();
+    ctx.strokeStyle = spiroColor;
+    ctx.translate(350,350);
 
+    drawSpirograph( ctx,
+      spiroOne * ( spiroTwo ) / ( spiroThree ),
+      spiroFour * ( spiroFive ) / ( spiroSix ),
+      spiroSeven );
+    ctx.restore();
 }
 
 $("#undo").click(function() {
@@ -390,129 +399,43 @@ $("#undo").click(function() {
 });
 
 function drawSpirograph(ctx,R,r,O){
-  var x1 = R-O;
-  var y1 = 0;
-  var i  = 1;
-  ctx.beginPath();
-  ctx.moveTo(x1,y1);
-  // do {
-    // if (i > numPoints) break;
+    var x1 = R-O;
+    var y1 = 0;
+    var i  = 1;
+    ctx.beginPath();
+    ctx.moveTo(x1,y1);
     for (i; i < numPoints; i++) {
-    var x2 = (R+r)*Math.cos(i*Math.PI/72) - (r+O)*Math.cos(((R+r)/r)*(i*Math.PI/72))
-    var y2 = (R+r)*Math.sin(i*Math.PI/72) - (r+O)*Math.sin(((R+r)/r)*(i*Math.PI/72))
-    ctx.lineTo(x2,y2);
-    x1 = x2;
-    y1 = y2;
-    // i++;
-  }
-    // if (i < numPoints) {
-    //   setTimeout(drawSpirograph, 1000)
-    // }
-  // } while (x2 != R-O && y2 != 0 );
-  ctx.stroke();
+        var x2 = (R+r)*Math.cos(i*Math.PI/72) - (r+O)*Math.cos(((R+r)/r)*(i*Math.PI/72))
+        var y2 = (R+r)*Math.sin(i*Math.PI/72) - (r+O)*Math.sin(((R+r)/r)*(i*Math.PI/72))
+        ctx.lineTo(x2,y2);
+        x1 = x2;
+        y1 = y2;
+    }
+    ctx.stroke();
 }
 
 makeItSo();
 
 var initialImg = cv.toDataURL();
 
-$('.presets a').click(function(){
-
-  var name = window.prompt('what you wanna call it, bro?');
-
-  var obj = {};
-  $('input').each(function(i, elem){
-    obj[elem.name] = elem.value
-  });
-
-  var presets = JSON.parse(localStorage.getItem('mypresets')) || {};
-  presets[name] = obj;
-
-  localStorage.setItem('mypresets', JSON.stringify(presets));
-
-  buildPresets();
-
-  return false;
-});
-
-
-
-applyPreset = function(preset){
-
-  preset = JSON.parse(preset);
-
-  $('input').each(function(i, elem){
-
-    elem.value = preset[elem.name];
-
-  }).change().blur();
-
-
-};
-
-
-
-buildPresets = function(){
-
-  $('ol').empty();
-
-  var mypresets = JSON.parse(localStorage.getItem('mypresets'));
-
-  $.each(mypresets || [], function(name, preset){
-
-
-
-    $('<a>',{
-      text          : name,
-      "data-preset" : JSON.stringify(preset),
-      href          : '#',
-      click         : function(){
-        applyPreset( $(this).attr('data-preset')  );
-        return false;
-      }
-    }).wrap('<li>').parent().appendTo('ol');
-
-
-
-  });
-
-
-
-}
-
 $("#toImage").click(function() {
   spiroBackgroundColor = "rgba(255,255,255,1)";
   makeItSo();
   var canvas = document.getElementById('canvas');
-  var img    = canvas.toDataURL("image/png");
-  var newWindow = window.open();
-  newWindow.document.write('<img src="'+img+'"/>');
-  newWindow.document.close();
-  spiroBackgroundColor = "#F9F9F9";
+  var img = canvas.toDataURL("image/png");
+
+  var imageDiv = $("#image-preview");
+  imageDiv.html('<img id="spiro-img" src="'+img+'"/>');
+  imageDiv.slideDown();
+
+  window.setTimeout(function() {
+    window.scrollTo(0,document.body.scrollHeight);
+  }, 500);
+
+  spiroBackgroundColor = "#F0F0F0";
   makeItSo();
 });
 
-// $("#code-display").slideToggle();
 $("#code-reveal").click(function() {
-  $("#code-display").slideToggle();
+    $("#code-display").slideToggle();
 });
-
-// $(function(){
-
-//   if (!Modernizr.localstorage){
-//     $('.presetwrap').remove();
-//     return;
-//   }
-
-
-//   buildPresets();
-// })
-
-// jQuery(document).ready(function($) {
-//   while (numPoints < 20000) {
-//    setInterval(makeItSo, 3000);
-//    console.log(numPoints);
-//    numPoints += 3000;
-//    // makeItSo();
-//   }
-// });
