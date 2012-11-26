@@ -291,7 +291,7 @@ li {
   margin: 5px 0;
 }
 
-tt { position: absolute; bottom: 15px; right: 15px; display:block;}
+tt { position: absolute; bottom: -60px; right: 15px; display:block;}
 
 #header {
   font-size: 4em;
@@ -330,7 +330,7 @@ tt { position: absolute; bottom: 15px; right: 15px; display:block;}
   margin-right: auto;
   margin-left: auto;
   /*min-height: 600px;*/
-  height: 100%;
+  min-height: 800px;
 }
 
 .canvas-wrap {
@@ -365,6 +365,7 @@ tt { position: absolute; bottom: 15px; right: 15px; display:block;}
 }
 
 #random-color {
+  font-size: .9em;
   
   /*color: #EBEBEB;
   font-size: 1.1em;
@@ -404,6 +405,22 @@ tt { position: absolute; bottom: 15px; right: 15px; display:block;}
   background: #CFCFCF;
   color: #5C5B5B;
   padding: 2px 4px;
+}
+
+#line-width-slider {
+  width: 100px;
+}
+
+#lineWidthCounter {
+  width: 20px;
+  border: none;
+  background: #CFCFCF;
+  color: #5C5B5B;
+  padding: 2px 4px;
+}
+
+label {
+  font-size: 1.1em;
 }
 
 button {

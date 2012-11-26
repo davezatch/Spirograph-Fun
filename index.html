@@ -27,7 +27,8 @@
    <!-- <link rel="stylesheet" href="html5widgets/css/slider.css"> -->
 
   <!-- jquery UI -->
-  <link rel="stylesheet" href="css/jquery-ui-1.9.1.custom.min.css">
+  <!-- <link rel="stylesheet" href="css/jquery-ui-1.9.1.custom.min.css"> -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
    <!--[if lte IE 6]>
      <link rel="stylesheet" href="html5widgets/css/slider_ie.css">
    <![endif]-->
@@ -76,38 +77,51 @@
         <label for="loopTwo">Loop Two</label>
         <input type="number" name="loopTwo" id="loopTwo" value="1" placeholder="">
       </li> -->
+      <li><h3>Parameters:</h3></li>
         <li>
         <label for="numPoints"># of Points:</label>
+        <br>
         <input type="text" class="number-spinner" name="numPoints" id="numPoints" value="20000" max="30000" min="1" placeholder=""> <input type="text" name="numPointsCounter" id="numPointsCounter" value="0" readonly>
       </li>
         <li>
         <label for="spiroOne">1:</label>
+        <br>
         <input type="text" class="number-spinner" name="spiroOne" id="spiroOne" value="9" placeholder="">
       </li>
         <li>
         <label for="spiroTwo">2:</label>
+        <br>
         <input type="text" class="number-spinner" name="spiroTwo" id="spiroTwo" value="9" placeholder="">
       </li>
         <li>
         <label for="spiroThree">3:</label>
+        <br>
         <input type="text" class="number-spinner" name="spiroThree" id="spiroThree" value="0.5" placeholder="">
       </li>
         <li>
         <label for="spiroFour">4:</label>
+        <br>
         <input type="text" class="number-spinner" name="spiroFour" id="spiroFour" value="-8" placeholder="">
       </li>
         <li>
         <label for="spiroFive">5:</label>
+        <br>
         <input type="text" class="number-spinner" name="spiroFive" id="spiroFive" value="10" placeholder="">
       </li>
         <li>
         <label for="spiroSix">6:</label>
+        <br>
         <input type="text" class="number-spinner" name="spiroSix" id="spiroSix" value="0.7" placeholder="">
       </li>
         <!-- <li>
         <label for="spiroSeven">Spiro 7</label>
         <input type="text" class="number-spinner" name="spiroSeven" id="spiroSeven" value="10" placeholder="">
       </li> -->
+      <li>
+        <label for="line-width-slider">Line Width:</label>
+        <br>
+        <div id="line-width-slider"></div><input type="text" name="lineWidthCounter" id="lineWidthCounter" value="0.5" readonly>
+      </li>
       <li>
         <br>
         <button id="slow-burn">Draw It</button>
@@ -159,7 +173,7 @@ Keyboard Shortcuts:
     &nbsp;&nbsp;canvas.beginPath();
     &nbsp;&nbsp;canvas.moveTo(x1,y1);
     &nbsp;&nbsp;do {
-    &nbsp;&nbsp;&nbsp;&nbsp;if (i > <input type="text" id="numPointsBottom" class="code-input" value="20000" max="30000" min="1">) break;
+    &nbsp;&nbsp;&nbsp;&nbsp;if (i > <input type="text" id="numPointsBottom" class="code-input" value="20000" max="30000" min="1"> ) break;
     &nbsp;&nbsp;&nbsp;&nbsp;var x2 = (R+r)*Math.cos(i*Math.PI/72) - (r+O)*Math.cos(((R+r)/r)*(i*Math.PI/72))
     &nbsp;&nbsp;&nbsp;&nbsp;var y2 = (R+r)*Math.sin(i*Math.PI/72) - (r+O)*Math.sin(((R+r)/r)*(i*Math.PI/72))
     &nbsp;&nbsp;&nbsp;&nbsp;canvas.lineTo(x2,y2);
@@ -208,7 +222,8 @@ Keyboard Shortcuts:
   
    <!-- // <script src="js/plugins.js"></script> -->
 
-   <script src="js/libs/jquery-ui-1.9.1.custom.min.js"></script>
+   <!-- // <script src="js/libs/jquery-ui-1.9.1.custom.min.js"></script> -->
+   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
    
   <!-- Color Element -->
   <script src="js/mylibs/jscolor/jscolor.js"></script>
