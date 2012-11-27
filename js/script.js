@@ -26,14 +26,6 @@ var baseNumPoints = 0;
 var slowBurnStatus = true;
 var staticDrawing = true;
 
-var topDiv = $("div.wrapper");
-
-// if (!('canvas' in document.body.style)) {
-//   document.querySelector('fieldset').style.display = 'none';
-//   document.querySelector('canvas').style.display = 'none';
-//   topDiv.innerHTML = 'Your browser doesn\'t support canvas. :(';
-// }
-
 var width = ctx.width;
 var height = ctx.height;
 
@@ -55,7 +47,6 @@ $("#numPoints, #numPointsBottom").spinner({
     numPoints = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 
 $("#spiroOne, #spiroOneBottom").spinner({
@@ -73,7 +64,6 @@ $("#spiroOne, #spiroOneBottom").spinner({
     spiroOne = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroTwo, #spiroTwoBottom").spinner({
   numberFormat : "n",
@@ -90,7 +80,6 @@ $("#spiroTwo, #spiroTwoBottom").spinner({
     spiroTwo = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroThree, #spiroThreeBottom").spinner({
   numberFormat : "n",
@@ -107,7 +96,6 @@ $("#spiroThree, #spiroThreeBottom").spinner({
     spiroThree = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroFour, #spiroFourBottom").spinner({
   numberFormat : "n",
@@ -124,7 +112,6 @@ $("#spiroFour, #spiroFourBottom").spinner({
     spiroFour = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroFive, #spiroFiveBottom").spinner({
   numberFormat : "n",
@@ -141,7 +128,6 @@ $("#spiroFive, #spiroFiveBottom").spinner({
     spiroFive = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroSix, #spiroSixBottom").spinner({
   numberFormat : "n",
@@ -158,23 +144,7 @@ $("#spiroSix, #spiroSixBottom").spinner({
     spiroSix = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
-// $("#spiroSeven, #spiroSevenBottom").spinner({
-//   spin : function(e) {
-//     spiroSeven = $(this).val();
-//     makeItSo(e);
-//   },
-//   stop : function(e) {
-//     spiroSeven = $(this).val();
-//     makeItSo(e);
-//   },
-//   change : function(e) {
-//     spiroSeven = $(this).val();
-//     makeItSo(e);
-//   }
-//   // "value" : $(this).val()
-// });
 
 var slowBurn = function() {
     numPoints = baseNumPoints;
@@ -255,64 +225,6 @@ $("#random-spiro").click(function() {
   randomColor();
   makeItSo();
 });
-
-// var inputValues = {
-//   "#spiroOne" : spiroOne,
-//   "#spiroTwo" : spiroTwo,
-//   "#spiroThree" : spiroThree,
-//   "#spiroFour" : spiroFour,
-//   "#spiroFive" : spiroFive,
-//   "#spiroSix" : spiroSix,
-//   "#spiroSeven" : spiroSeven,
-// };
-
-// $.each(inputValues, function(key, value) {
-//   var foundIt = $("span:contains(" + key + "#)").html(); /*produces string*/
-//   // $("span:contains(" + key + "#)").css("background","red");
-//   // var find = key;
-//   var valueStr = value.toString();
-//   // console.log(valueStr);
-//   var regex = new RegExp(foundIt, "g");
-//   // foundIt.replace(regex, value.toString());
-//   // console.log(regex);
-//   console.log(foundIt.replace(regex, value.toString()));
-//   foundIt.replace(regex, value.toString());
-
-
-//   // var foundIt = $("span:contains(" + key + "#)");
-//   // var foundString = foundIt.toString();
-//   // foundString.replace(/#/g, value);
-//   // console.log(foundIt + ": " + value);
-//   // console.log(typeof(foundIt));
-//     // foundIt.css("background","red");
-//     // foundIt.replace(/#/g, value);
-//   // var foundIt = $(key + "#")
-// });
-
-// $('input[type="range"]').change(function(e){
-
-//   // reset so we dont do multiple directions
-//   // but only if its a manually triggered change
-//   if (e.srcElement && !randomMode){
-//     // [].forEach.call( document.querySelectorAll('input[type="range"]') , function(slider, i){
-//     //   if (slider == e.target) return;
-//     //   slider.value = 0;
-//     // $(this).val();
-//   }
-//     numEl = $(this).val();
-//     makeItSo(e);
-//     });
-  // }
-
-
-//   direction = e.target.id.replace('len','');
-
-//   length = e.target.value;
-//   //debugger;
-//   makeItSo(e);
-
-// });
-
 
 // color
 function changeColor(e){
