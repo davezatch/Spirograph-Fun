@@ -22,6 +22,8 @@ var spiroSeven = 10;
 var spiroColor = "#006622";
 var spiroBackgroundColor = "#F0F0F0";
 
+cLineWidth = .5;
+
 var baseNumPoints = 0;
 var slowBurnStatus = true;
 var staticDrawing = true;
@@ -145,6 +147,28 @@ $("#spiroSix, #spiroSixBottom").spinner({
     makeItSo(e);
   }
 });
+
+$( "#line-width-slider" ).slider({
+  min : 0.1,
+  max : 10,
+  step : 0.1,
+  change : function(e) {
+    cLineWidth = $(this).slider("value");
+    $("#lineWidthCounter").val($(this).slider("value"));
+    makeItSo(e);
+  },
+  slide : function(e) {
+    cLineWidth = $(this).slider("value");
+    $("#lineWidthCounter").val($(this).slider("value"));
+    makeItSo(e);
+  },
+  stop : function(e) {
+    cLineWidth = $(this).slider("value");
+    $("#lineWidthCounter").val($(this).slider("value"));
+    makeItSo(e);
+  }
+});
+
 
 var slowBurn = function() {
     numPoints = baseNumPoints;
@@ -281,6 +305,7 @@ function makeItSo(e){
     ctx.fillStyle = spiroBackgroundColor;
     ctx.fillRect(0,0,700,700);
     ctx.save();
+    ctx.lineWidth = cLineWidth;
     ctx.strokeStyle = spiroColor;
     ctx.translate(350,350);
 
