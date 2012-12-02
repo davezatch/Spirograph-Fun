@@ -30,12 +30,6 @@ var staticDrawing = true;
 
 var topDiv = $("div.wrapper");
 
-// if (!('canvas' in document.body.style)) {
-//   document.querySelector('fieldset').style.display = 'none';
-//   document.querySelector('canvas').style.display = 'none';
-//   topDiv.innerHTML = 'Your browser doesn\'t support canvas. :(';
-// }
-
 var width = ctx.width;
 var height = ctx.height;
 
@@ -57,7 +51,6 @@ $("#numPoints, #numPointsBottom").spinner({
     numPoints = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 
 $("#spiroOne, #spiroOneBottom").spinner({
@@ -75,7 +68,6 @@ $("#spiroOne, #spiroOneBottom").spinner({
     spiroOne = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroTwo, #spiroTwoBottom").spinner({
   numberFormat : "n",
@@ -92,7 +84,6 @@ $("#spiroTwo, #spiroTwoBottom").spinner({
     spiroTwo = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroThree, #spiroThreeBottom").spinner({
   numberFormat : "n",
@@ -109,7 +100,6 @@ $("#spiroThree, #spiroThreeBottom").spinner({
     spiroThree = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroFour, #spiroFourBottom").spinner({
   numberFormat : "n",
@@ -126,7 +116,6 @@ $("#spiroFour, #spiroFourBottom").spinner({
     spiroFour = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroFive, #spiroFiveBottom").spinner({
   numberFormat : "n",
@@ -143,7 +132,6 @@ $("#spiroFive, #spiroFiveBottom").spinner({
     spiroFive = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 $("#spiroSix, #spiroSixBottom").spinner({
   numberFormat : "n",
@@ -160,7 +148,6 @@ $("#spiroSix, #spiroSixBottom").spinner({
     spiroSix = $(this).val();
     makeItSo(e);
   }
-  // "value" : $(this).val()
 });
 
 jQuery(document).ready(function($) {
@@ -187,22 +174,6 @@ $( "#line-width-slider" ).slider({
     makeItSo(e);
   }
 });
-
-// $("#spiroSeven, #spiroSevenBottom").spinner({
-//   spin : function(e) {
-//     spiroSeven = $(this).val();
-//     makeItSo(e);
-//   },
-//   stop : function(e) {
-//     spiroSeven = $(this).val();
-//     makeItSo(e);
-//   },
-//   change : function(e) {
-//     spiroSeven = $(this).val();
-//     makeItSo(e);
-//   }
-//   // "value" : $(this).val()
-// });
 
 var slowBurn = function() {
     numPoints = baseNumPoints;
@@ -348,25 +319,7 @@ $(rando).bind('click', randomColor);
 
 var history = [];
 
-// document.querySelector('input[type="checkbox"]').addEventListener('change', function(e){
-//   randomMode = e.target.checked;
-// }, false);
-
-// $('button:first').click(function f(e){
-//    f.on = !f.on;
-//    e.target.innerHTML = f.on ? 'what does it mean?' : 'all the way';
-//    RAINBOWZ(f.on);
-// });
-
-// $('button:last').click(function f(e){
-//    f.on = !f.on;
-//    e.target.innerHTML = f.on ? 'nvm.' : '3D';
-//    threeD(f.on);
-// });
-
-
 function makeItSo(e){
-    // var ctx = document.getElementById('canvas').getContext('2d');
     if (staticDrawing) {
         history.push(cv.toDataURL());
     }
