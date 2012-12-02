@@ -20,13 +20,21 @@ var spiroSix = 0.2;
 var spiroSeven = 10;
 
 var spiroColor = "#006622";
-var spiroBackgroundColor = "#F0F0F0";
+var spiroBackgroundColor = "rgb(250,250,250)";
 
 cLineWidth = .5;
 
 var baseNumPoints = 0;
 var slowBurnStatus = true;
 var staticDrawing = true;
+
+var topDiv = $("div.wrapper");
+
+// if (!('canvas' in document.body.style)) {
+//   document.querySelector('fieldset').style.display = 'none';
+//   document.querySelector('canvas').style.display = 'none';
+//   topDiv.innerHTML = 'Your browser doesn\'t support canvas. :(';
+// }
 
 var width = ctx.width;
 var height = ctx.height;
@@ -49,6 +57,7 @@ $("#numPoints, #numPointsBottom").spinner({
     numPoints = $(this).val();
     makeItSo(e);
   }
+  // "value" : $(this).val()
 });
 
 $("#spiroOne, #spiroOneBottom").spinner({
@@ -66,6 +75,7 @@ $("#spiroOne, #spiroOneBottom").spinner({
     spiroOne = $(this).val();
     makeItSo(e);
   }
+  // "value" : $(this).val()
 });
 $("#spiroTwo, #spiroTwoBottom").spinner({
   numberFormat : "n",
@@ -82,6 +92,7 @@ $("#spiroTwo, #spiroTwoBottom").spinner({
     spiroTwo = $(this).val();
     makeItSo(e);
   }
+  // "value" : $(this).val()
 });
 $("#spiroThree, #spiroThreeBottom").spinner({
   numberFormat : "n",
@@ -98,6 +109,7 @@ $("#spiroThree, #spiroThreeBottom").spinner({
     spiroThree = $(this).val();
     makeItSo(e);
   }
+  // "value" : $(this).val()
 });
 $("#spiroFour, #spiroFourBottom").spinner({
   numberFormat : "n",
@@ -114,6 +126,7 @@ $("#spiroFour, #spiroFourBottom").spinner({
     spiroFour = $(this).val();
     makeItSo(e);
   }
+  // "value" : $(this).val()
 });
 $("#spiroFive, #spiroFiveBottom").spinner({
   numberFormat : "n",
@@ -130,6 +143,7 @@ $("#spiroFive, #spiroFiveBottom").spinner({
     spiroFive = $(this).val();
     makeItSo(e);
   }
+  // "value" : $(this).val()
 });
 $("#spiroSix, #spiroSixBottom").spinner({
   numberFormat : "n",
@@ -146,11 +160,16 @@ $("#spiroSix, #spiroSixBottom").spinner({
     spiroSix = $(this).val();
     makeItSo(e);
   }
+  // "value" : $(this).val()
+});
+
+jQuery(document).ready(function($) {
+  
 });
 
 $( "#line-width-slider" ).slider({
   min : 0.1,
-  max : 10,
+  max : 5,
   step : 0.1,
   change : function(e) {
     cLineWidth = $(this).slider("value");
@@ -169,6 +188,21 @@ $( "#line-width-slider" ).slider({
   }
 });
 
+// $("#spiroSeven, #spiroSevenBottom").spinner({
+//   spin : function(e) {
+//     spiroSeven = $(this).val();
+//     makeItSo(e);
+//   },
+//   stop : function(e) {
+//     spiroSeven = $(this).val();
+//     makeItSo(e);
+//   },
+//   change : function(e) {
+//     spiroSeven = $(this).val();
+//     makeItSo(e);
+//   }
+//   // "value" : $(this).val()
+// });
 
 var slowBurn = function() {
     numPoints = baseNumPoints;
@@ -237,7 +271,7 @@ $("#random-spiro").click(function() {
   spiroThree = (Math.random()*3.5).toFixed(2);
   $("#spiroThree, #spiroThreeBottom").val(spiroThree);
 
-  spiroFour = (Math.random()*-10).toFixed(2);
+  spiroFour = (Math.random()*-6).toFixed(2);
   $("#spiroFour, #spiroFourBottom").val(spiroFour);
 
   spiroFive = (Math.random()*10).toFixed(2);
@@ -246,8 +280,40 @@ $("#random-spiro").click(function() {
   spiroSix = (Math.random()*0.7).toFixed(2);
   $("#spiroSix, #spiroSixBottom").val(spiroSix);
 
+  cLineWidth = (Math.random()*2+0.1).toFixed(1);
+  $("#line-width-slider").slider("value", cLineWidth);
+
   randomColor();
   makeItSo();
+});
+
+$(".keyboard-shortcuts").dialog({
+  autoOpen : false,
+  closeOnEscape : true,
+  modal : true,
+  dialogClass : "keyboard-dialog",
+  title : "Keyboard Shortcuts",
+  width: 500
+});
+
+$(document).bind('keydown', 'shift+/', function() {
+  $(".keyboard-shortcuts").dialog('open');
+});
+
+$(document).bind('keydown', 'r', function() {
+  $("#random-spiro").click();
+});
+
+$(document).bind('keydown', 'd', function() {
+  $("#slow-burn").click();
+});
+
+$(document).bind('keydown', 's', function() {
+  $("#slow-burn-stop").click();
+});
+
+$(document).bind('keydown', 'u', function() {
+  $("#undo").click();
 });
 
 // color
@@ -369,7 +435,7 @@ $("#toImage").click(function() {
     window.scrollTo(0,document.body.scrollHeight);
   }, 500);
 
-  spiroBackgroundColor = "#F0F0F0";
+  spiroBackgroundColor = "rgb(250,250,250)";
   makeItSo();
 });
 
