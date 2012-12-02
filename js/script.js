@@ -297,7 +297,10 @@ $(".keyboard-shortcuts").dialog({
 });
 
 $(document).bind('keydown', 'shift+/', function() {
-  $(".keyboard-shortcuts").dialog('open');
+  var isOpen = $( ".keyboard-shortcuts" ).dialog( "isOpen" );
+  if (!isOpen) {
+    $(".keyboard-shortcuts").dialog('open');
+  }
 });
 
 $(document).bind('keydown', 'r', function() {
